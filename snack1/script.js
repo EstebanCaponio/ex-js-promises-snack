@@ -4,7 +4,7 @@ function getPostTitle(id) {
     const promessa = new Promise((resolve, reject) => {
         fetch(`https://dummyjson.com/posts/${id}`)
             .then(Response => Response.json())
-            .then(data => resolve(data))
+            .then(data => resolve(data.title))
             .catch(reject);
     });
 
@@ -12,5 +12,5 @@ function getPostTitle(id) {
 };
 
 getPostTitle(3)
-    .then(data => console.log(data.title))
+    .then(data => console.log(data))
     .catch(error => console.error(error));
