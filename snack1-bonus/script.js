@@ -4,7 +4,7 @@ function getPost(id) {
 
     return new Promise((resolve, reject) => {
         fetch(`https://dummyjson.com/posts/${id}`)
-            .then(Response => Response.json())
+            .then(response => response.json())
             .then(data => {
                 fetch(`https://dummyjson.com/users/${data.userId}`)
                     .then(intResp => intResp.json())
