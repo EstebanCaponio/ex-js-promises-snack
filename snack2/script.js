@@ -3,30 +3,31 @@
 function lanciaDado() {
     let count = 3;
 
-    const countdown = setInterval(() => {
-        console.log(count);
-        count--;
-    }, 1000);
+    return new Promise((resolve, reject) => {
 
-    setTimeout(() => {
+        const countdown = setInterval(() => {
+            console.log(count);
+            count--;
+        }, 1000);
 
-        clearInterval(countdown);
+        setTimeout(() => {
 
-        const promessa = new Promise((resolve, reject) => {
+            clearInterval(countdown);
 
             const probabilita = Math.random();
 
             if (probabilita > 0.2) {
+
                 const dado = Math.floor(Math.random() * 6) + 1;
-                resolve(console.log(`Lancio del dado: ${dado}`));
+                resolve(dado);
             } else {
                 reject('il dado si è incastrato');
             }
-        })
-
-        return promessa;
-    }, 3000);
+        }, 3000);
+    })
 
 };
 
-lanciaDado();
+lanciaDado()
+    .then(dado => console.log(`Il dado ha lanciato: ${dado}`))
+    .catch(err => console.log(err));
