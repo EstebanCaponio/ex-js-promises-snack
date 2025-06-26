@@ -12,5 +12,5 @@ function getPostTitle(id) {
 };
 
 getPostTitle(3)
-    .then(data => console.log(data))
+    .then(data => console.log(data.title))
     .catch(error => console.error(error));
